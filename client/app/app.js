@@ -1,8 +1,9 @@
+//Removed shortly.auth due to error
 angular.module('shortly', [
   'shortly.services',
   'shortly.links',
   'shortly.shorten',
-  'shortly.auth',
+  'shortly.navigation',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -22,7 +23,8 @@ angular.module('shortly', [
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
-    });
+    })
+    .otherwise('/links');
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
