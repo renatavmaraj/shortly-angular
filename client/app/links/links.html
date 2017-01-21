@@ -1,10 +1,11 @@
 <div id='links' >
-<div class='link' ng-repeat='link in data.links'>
+<input type='text' placeholder='search' ng-model='searchBar'/>
+<div class='link' ng-repeat='link in data.links | filter: searchBar | orderBy: "visits":true' >
   <div class="visits">
     <span class="count">{{link.visits}}</span>Visits
   </div>
   <div class='title'>{{link.title}}</div>
   <div class='linkUrl'> {{link.url}} </div>
-  <a href='/api/links/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
+  <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
 </div>
 </div>

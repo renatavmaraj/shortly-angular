@@ -1,8 +1,11 @@
 <div id='shorten'>
 <form name="form" ng-submit="addLink()">
-  <input name='link' type='url' ng-model='link.url' placeholder="http://facebook.com"></input>
-  <button type='submit' value='shorten'>Add Link</button>
+  <input name='link' type='url' ng-model='link.url' placeholder="http://facebook.com" ng-class="{'error': form.$invalid && form.$dirty}"></input>
+  <button type='submit' value='shorten' ng-disabled='form.$invalid' form.$setPristine() >Add Link</button>
 </form>
+<div class='message' ng-if="form.link.$error.url && form.$dirty"><h3>Not a valid URL</h3></div>
+<div class='message' ng-if="form.$pristine"><h3>URL required</h3></div>
+
 </div>
 
 
